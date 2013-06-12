@@ -1,5 +1,4 @@
 
-
 var to, width, height, position, autodismiss;
 
 function setDefaultValues(){
@@ -94,6 +93,7 @@ function notif(type, msg){
             $("#ui_notifIt").css("left", mid-parseInt(width/2));
             break;
     }
+    
     $("#ui_notifIt p").css("line-height", height+"px");
 
     switch(position){
@@ -112,9 +112,7 @@ function notif(type, msg){
     }
     
 
-    $("#ui_notifIt").click(function(){
-        dismiss();
-    });
+    $("#ui_notifIt").click(function(){ dismiss(); });
 
     if(autodismiss == "auto-dismiss")
         to = setTimeout(function(){dismiss();},5000);
