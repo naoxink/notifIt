@@ -8,12 +8,12 @@ Simple notifications with JQuery
 Definition
 -
 ````javascript
-notif(String notif_type, 
-      String msg, 
-      String position, 
-      int width, 
-      int height, 
-      String click-to-dismiss);
+notif(String notif_type, // success, error, warning, info
+      String msg,
+      String position, // Left, center, right
+      int width,
+      int height,
+      String click-to-dismiss); // click-to-dismiss
 ````
 
 Examples
