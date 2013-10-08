@@ -29,3 +29,6 @@ notif("info", "<b>Info: </b>Some info here.", "center", 900, 100);
 
 notif("error", "<b>Error: </b>This error will stay here until you click it.", "center", 500, 60, "click-to-dismiss");
 ````
+Demo
+-
+https://dl.dropboxusercontent.com/u/19156616/ficheros/notifIt!-1.0/index.html
