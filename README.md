@@ -5,30 +5,25 @@ Description
 -
 Simple notifications with JQuery
 
-Definition
--
-````javascript
-notif(String notif_type, // success, error, warning, info
-      String msg,
-      String position, // Left, center, right
-      int width,
-      int height,
-      String click-to-dismiss); // click-to-dismiss
-````
-
-Examples
--
-````javascript
-notif("success", "<b>Success:</b> In 5 seconds i'll be gone");
-
-notif("error", "<b>Oops!</b> A wild error appeared!", "center");
-
-notif("warning", "<b>Warning:</b> Be patient my friend.", "left");
-
-notif("info", "<b>Info: </b>Some info here.", "center", 900, 100);
-
-notif("error", "<b>Error: </b>This error will stay here until you click it.", "center", 500, 60, "click-to-dismiss");
-````
 Demo
 -
-https://dl.dropboxusercontent.com/u/19156616/ficheros/notifIt!-1.0/index.html
+https://dl.dropboxusercontent.com/u/19156616/ficheros/notifIt!-1.1/index.html
+
+Configuration
+-
+- **type** [String] success, error, warning, info
+- **msg** [String]
+- **position** [String] Left, center, right [optional]
+- **width** [Integer] [optional]
+- **height** [Integer] [optional]
+- **autohide** [Boolean] [optional]
+
+Example
+-
+````javascript
+notif({
+	msg: "<b>Oops!</b> A wild error appeared!",
+	type: "error",
+	position: "center"
+});
+````
