@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+			h2{color: #444;font-family: sans-serif;}
+            #wrap{width: 550px;margin: 0 auto; min-height: 500px;margin-top: -20px;}
+            button{width: 100%; padding: 10px; color: #444; background-color: #f4f4f4;cursor:pointer;border: none; margin: 2px;}
+            button:hover{background-color: #DDD;}
+            button:active{background-color: #777;}
+            footer{font-family: sans-serif; font-size: 12px;}
+            footer p{color: #aaa;}
+            footer p a{color: yellowgreen; text-decoration: none;}
+            .title{font-size: 57px; font-weight: bold; color: #555;margin-bottom: 0;}
+            .subtitle{font-size: 14px; color: #999;margin-top: -10px;margin-bottom: 20px;}
+			pre{padding: 10px; background-color: #EEE;}
+			.comment{color: #AAA;}
+			.string{color: teal;}
+			.tag{color: blue;}
+			.attr{color: green;}
+			.button_download{
+				display: block;
+				font-family: sans-serif;
+				cursor: pointer;
+				width: 60px;
+				padding: 10px 30px 10px 30px;
+				font-weight: bold;
+				font-size: 20px;
+				text-decoration: none;
+				text-align: center;
+				margin: 0 auto;
+				background-color: #444;
+				color: #EEE;
+				transition: all 0.3s;
+				-moz-transition: all 0.3s;
+				-webkit-transition: all 0.3s;
+				-o-transition: all 0.3s;
+				-ms-transition: all 0.3s;
+			}
+			.button_download:hover{
+				width: 480px;
+				background-color: yellowgreen;
+				color: #444;
+			}
+			.step{color: #AAA;}
+        </style>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript" src="js/notifIt.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/notifIt.css">
+    </head>
+    <body>
+        <div id="wrap">
+            <p class="title">notifIt!</p>
+            <p class="subtitle">Notify what you want!</p>
+			<h2><span class="step">Step 1 -</span> Try it!</h2>
+            <button onclick="not1()">NotifIt! 1 (Default position, Success)</button>
+            <button onclick="not2()">NotifIt! 2 (Centered, error)</button>
+            <button onclick="not3()">NotifIt! 3 (Left, Warning)</button>
+            <button onclick="not4()">NotifIt! 4 (Centered, Info, Custom size)</button>
+            <button onclick="not5()">NotifIt! 5 (Centered, error, custom size, click-to-dismiss)</button>
+            <button onclick="not6()">NotifIt! 6 (Centered, warning, custom opacity)</button>
+			<h2><span class="step">Step 2 -</span> Download it!</h2>
+			<a href="https://dl.dropboxusercontent.com/u/19156616/ficheros/notifIt!-1.1.zip" class="button_download">Now!</a>
+			<h2><span class="step">Step 3 -</span> Plug</h2>
+			<pre><span class="comment">// Include this in the &lt;head&gt;</span>
+<span class="tag">&lt;script</span> <span class="attr">type=</span><span class="string">"text/javascript"</span> <span class="attr">src=</span><span class="string">"js/notifIt.js"</span><span class="tag">&gt;</span></script>
+<span class="tag">&lt;link</span> <span class="attr">rel=</span><span class="string">"stylesheet"</span> <span class="attr">type=</span><span class="string">"text/css"</span> <span class="attr">href=</span><span class="string">"css/notifIt.css"</span><span class="tag">&gt;</span></pre>
+			<h2><span class="step">Step 4 -</span> & play</h2>
+			<pre><b>notif(</b>{
+	msg: <span class="string">"&lt;b&gt;Oops!&lt;/b&gt; A wild error appeared!"</span>,
+	type: <span class="string">"error"</span>,
+	position: <span class="string">"center"</span>
+}<b>);</b></pre>
+            <footer>
+                <p>Developed by: <a href="http://twitter.com/naoxink">naoxink</a> @ 2013 | Get it now: <a href="https://github.com/naoxink/notifIt">GitHub</a></p>
+            </footer>
+        </div>
+    <script>
+        function not1(){
+            notif({
+				msg: "<b>Success:</b> In 5 seconds i'll be gone",
+				type: "success"
+			});
+        }
+        function not2(){
+            notif({
+				msg: "<b>Oops!</b> A wild error appeared!",
+				type: "error",
+				position: "center"
+			});
+        }
+        function not3(){
+            notif({
+				type: "warning",
+				msg: "<b>Warning:</b> Be patient my friend.",
+				position: "left"
+			});
+        }
+        function not4(){
+            notif({
+				type: "info",
+				msg: "<b>Info: </b>Some info here.",
+				width: "all",
+				height: 100,
+				position: "center"
+			});
+        }
+        function not5(){
+            notif({
+				type: "error",
+				msg: "<b>Error: </b>This error will stay here until you click it.",
+				position: "center",
+				width: 500,
+				height: 60,
+				autohide: false
+			});
+        }
+		function not6(){
+			notif({
+				type: "warning",
+				msg: "Opacity is cool!",
+				position: "center",
+				opacity: 0.8
+			});
+		}
+    </script>
+    </body>
+</html>

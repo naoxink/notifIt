@@ -1,41 +1,46 @@
 
-var to, width, height, position, autodismiss;
 
-function setDefaultValues(){
+var to, width, height, position, autohide, opacity;
+
+function notifit_setDefaultValues(){
     // Default size
     width = 400;
     height = 60;
-    
     // Default position
     position = "right";
-    // Default dismiss
-    autodismiss = "auto-dismiss";
+    // Default autohide
+    autohide = true;
+	// Default msg
+	msg = "";
+	// Default opacity (Only Chrome, Firefox and Safari)
+	opacity = 1;
 }
-function notif(type, msg){
+function notif(config){
     
-    setDefaultValues();
-    
-    if(arguments[2]){
-        if(arguments[2] == "center" ||
-            arguments[2] == "left" ||
-            arguments[2] == "right"){
-            position = arguments[2]; // Take the position
+    notifit_setDefaultValues();
+
+    if(config.position){
+        if(config.position == "center" ||
+            config.position == "left" ||
+            config.position == "right"){
+            position = config.position; // Take the position
         }
     }
-    if(arguments[3]){
-        if(arguments[3] > 0){
-            width = arguments[3]; // Take the width
+    if(config.width){
+        if(config.width > 0){
+            width = config.width; // Take the width in pixels
+        }else if(config.width === "all"){
+			width = screen.width - 60; // Margin difference
+		}
+    }
+    if(config.height){
+        if(config.height < 100 && config.height > 0){
+            height = config.height; // Take the height in pixels
         }
     }
-    if(arguments[4]){
-        if(arguments[4] < 100 && arguments[4] > 0){
-            height = arguments[4]; // Take the height
-        }
-    }
-    if(arguments[5])
-        autodismiss = arguments[5];
-    
-    var div = "<div id='ui_notifIt'><p>"+msg+"</p></div>";
+	if(typeof config.autohide !== "undefined")
+	    autohide = config.autohide;
+    var div = "<div id='ui_notifIt'><p>"+((config.msg) ? config.msg : "")+"</p></div>";
     
     $("#ui_notifIt").remove(); // Preventive remove
     clearInterval(to); // Preventive clearInterval
@@ -57,9 +62,10 @@ function notif(type, msg){
             $("#ui_notifIt").css("right", parseInt(0-(width+10)));
             break;
     }
+
+	if(config.opacity){ $("#ui_notifIt").css("opacity", config.opacity); }
     
-    
-    switch(type){
+    switch(config.type){
         case "error":
             $("#ui_notifIt").addClass("error");
             break;
@@ -93,7 +99,6 @@ function notif(type, msg){
             $("#ui_notifIt").css("left", mid-parseInt(width/2));
             break;
     }
-    
     $("#ui_notifIt p").css("line-height", height+"px");
 
     switch(position){
@@ -112,14 +117,16 @@ function notif(type, msg){
     }
     
 
-    $("#ui_notifIt").click(function(){ dismiss(); });
+    $("#ui_notifIt").click(function(){
+        notifit_dismiss();
+    });
 
-    if(autodismiss == "auto-dismiss")
-        to = setTimeout(function(){dismiss();},5000);
+    if(autohide == true)
+        to = setTimeout(function(){notifit_dismiss();},5000);
     
 }
 
-function dismiss(){
+function notifit_dismiss(){
     clearInterval(to);
     if(position == "center"){
         $("#ui_notifIt").animate({
@@ -128,7 +135,7 @@ function dismiss(){
             $("#ui_notifIt").animate({
                 top: parseInt(0-(height*2))
             }, 100, function(){
-                ("#ui_notifIt").remove();
+                $("#ui_notifIt").remove();
                 });
         });
     }else if(position == "right"){
@@ -138,7 +145,7 @@ function dismiss(){
             $("#ui_notifIt").animate({
                 right: parseInt(0-(width*2))
             }, 100, function(){
-                ("#ui_notifIt").remove();
+                $("#ui_notifIt").remove();
                 });
         });
     }else if(position == "left"){
@@ -148,9 +155,9 @@ function dismiss(){
             $("#ui_notifIt").animate({
                 left: parseInt(0-(width*2))
             }, 100, function(){
-                ("#ui_notifIt").remove();
+                $("#ui_notifIt").remove();
                 });
         });
     }
-    setDefaultValues();
+    notifit_setDefaultValues();
 }
