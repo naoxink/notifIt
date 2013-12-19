@@ -17,7 +17,7 @@ https://dl.dropboxusercontent.com/u/19156616/ficheros/notifIt!-1.1/index.html
 - **width** [Integer] [optional]
 - **height** [Integer] [optional]
 - **autohide** [Boolean] [optional]
-- **opacity** [Integer] [From 0 to 1] [optional]
+- **opacity** [Float] [From 0 to 1] [optional]
 - **multiline** [Boolean] [optional]
 - **fade** [Boolean] [optional]
 - **bgcolor** [String] [optional]
