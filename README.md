@@ -22,6 +22,7 @@ https://dl.dropboxusercontent.com/u/19156616/ficheros/notifIt!-1.1/index.html
 - **fade** [Boolean] [optional]
 - **bgcolor** [String] [optional]
 - **color** [String] [optional]
+- **timeout** [Integer] [optional]
 
 #### Quick Example
 ```javascript
