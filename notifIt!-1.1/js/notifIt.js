@@ -3,10 +3,10 @@
 var to, width, height, position, autohide, opacity, time;
 
 function notifit_setDefaultValues(){
-    width = 400;
-    height = 60;
-    position = "right";
-    autohide = true;
+	width = 400;
+	height = 60;
+	position = "right";
+	autohide = true;
 	msg = "";
 	opacity = 1; // Default opacity (Only Chrome, Firefox and Safari)
 	multiline = false;
@@ -92,6 +92,7 @@ function notif(config){
 	if(config.color){
 		$("#ui_notifIt").css("color", config.color);
 	}
+	// Horizontal position
     switch(position){
         case "left":
             $("#ui_notifIt").css("left", parseInt(0-(width*2)));
@@ -108,6 +109,7 @@ function notif(config){
             $("#ui_notifIt").css("left", mid-parseInt(width/2));
             break;
     }
+    // Vertical position
     switch(position){
         case "center":
             $("#ui_notifIt").animate({top: 10});
@@ -127,7 +129,7 @@ function notif(config){
     });
     if(autohide){
     	if(config.timeout){
-    		if(!isNaN(config.timeout)){
+    		if(!isNaN(config.timeout)){ // Take the timeout if is a number
     			time = config.timeout;
     		}
     	}
