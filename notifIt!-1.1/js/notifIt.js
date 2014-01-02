@@ -1,6 +1,6 @@
 
 
-var to, width, height, position, autohide, opacity;
+var to, width, height, position, autohide, opacity, time;
 
 function notifit_setDefaultValues(){
     // Default size
@@ -14,6 +14,8 @@ function notifit_setDefaultValues(){
 	msg = "";
 	// Default opacity (Only Chrome, Firefox and Safari)
 	opacity = 1;
+	// Default time
+	time = 5000;
 }
 function notif(config){
     
@@ -121,8 +123,14 @@ function notif(config){
         notifit_dismiss();
     });
 
-    if(autohide == true)
-        to = setTimeout(function(){notifit_dismiss();},5000);
+    if(autohide == true){
+    	if(config.time){
+    		if(!isNaN(config.time)){
+    			time = config.time;
+    		}
+    	}
+        to = setTimeout(function(){notifit_dismiss();}, time);
+    }
     
 }
 
