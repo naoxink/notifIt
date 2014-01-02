@@ -26,9 +26,10 @@ https://dl.dropboxusercontent.com/u/19156616/ficheros/notifIt!-1.1/index.html
 
 #### Plug
 ```html
-// Include this in the <head>
-<script type="text/javascript" src="js/notifIt.js">
-<link rel="stylesheet" type="text/css" href="css/notifIt.css">
+<head>
+	<script type="text/javascript" src="js/notifIt.js">
+	<link rel="stylesheet" type="text/css" href="css/notifIt.css">
+</head>
 ```
 
 #### & Play
