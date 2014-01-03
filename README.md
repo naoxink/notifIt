@@ -7,7 +7,7 @@ Simple notifications with JQuery.
 Now you can send notifications of everything you want and when you want, simply and quickly.
 Easy to learn and use. Customize with your favorite colors, define the size you want, set the opacity, make a sticky one and much more!
 
-#### Demo [here](https://dl.dropboxusercontent.com/u/19156616/ficheros/notifIt!-1.1/index.html)
+#### Demo [here](http://naoxink.hol.es/notifIt)
 
 #### Configuration
 - **type** [String] success, error, warning, info
