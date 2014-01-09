@@ -11,20 +11,20 @@ Easy to learn and use. Customize with your favorite colors, define the size you 
 
 #### Configuration
 
-Variable name|Type|Posible values
----|---|---
-type|String|success, error, warning, info
-msg|String|Message
-position|String|left, center, right
-width|Integer-String|Number > 0, 'all'
-height|Integer|Number between 0 and 100
-autohide|Boolean|true, false
-opacity|Float|From 0 to 1
-multiline|Boolean|true, false
-fade|Boolean|true, false
-bgcolor|String|HEX color
-color|String|HEX color
-timeout|Integer|Miliseconds
+Variable name|Type|Posible values|Default
+---|---|---|---
+type|String|success, error, warning, info|default
+msg|String|Message|
+position|String|left, center, right|right
+width|Integer-String|Number > 0, 'all'|400
+height|Integer|Number between 0 and 100|60
+autohide|Boolean|true, false|true
+opacity|Float|From 0 to 1|1
+multiline|Boolean|true, false|false
+fade|Boolean|true, false|false
+bgcolor|String|HEX color|#444
+color|String|HEX color|#EEE
+timeout|Integer|Miliseconds|5000
 
 
 
