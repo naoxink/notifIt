@@ -1,0 +1,257 @@
+<html><head>
+        <meta charset="utf-8">
+        <style>
+						html{ height: 100%; }
+						body{ padding: 0; margin: 0; height: 100%; }
+						h2{color: white; font-family: sans-serif; background-color: teal; padding: 10px; font-weight: lighter; }
+						h2 a{ float: right; color: white; text-decoration: none; vertical-align: bottom; }
+						#wrap{width: 550px;margin: 0 auto; }
+						pre, pre.noclick{ text-align: left; background-color: #EEE; border-left: 5px solid teal; cursor: pointer; border-top: 1px solid transparent; border-bottom: 1px solid transparent; border-right: 1px solid transparent; }
+						pre:hover{ background-color: #f4f4f4; border-color: teal; }
+						pre:active{ background-color: #DDD; }
+						pre.noclick{ cursor: inherit; }
+						pre.noclick:hover{ background-color: #EEE; border-top-color: transparent; border-right-color: transparent; border-bottom-color: transparent; }
+						footer{font-family: sans-serif; font-size: 12px;}
+						footer p{color: #aaa;}
+						footer p a{color: yellowgreen; text-decoration: none;}
+						.title{font-size: 57px; font-weight: bold; color: #555;margin-bottom: 0;}
+						.subtitle{font-size: 14px; color: #999;margin-top: -10px; }
+						.version{ font-size: 10px; font-weight: lighter; font-family: sans-serif; color: #555; }
+						.s{ color: teal; }
+						.b{ color: purple; }
+						.f{ font-weight: bold; }
+						.n{ font-weight: bold; }
+						pre{padding: 10px; background-color: #EEE;}
+						hr{ height: 5px; border: 0; margin: 0; }
+			.comment{color: #AAA;}
+			.string{color: teal;}
+			.tag{color: blue;}
+			.attr{color: green;}
+			.button_download{
+				display: block;
+				font-family: sans-serif;
+				cursor: pointer;
+				width: 60px;
+				padding: 10px 30px 10px 30px;
+				font-weight: bold;
+				font-size: 20px;
+				text-decoration: none;
+				text-align: center;
+				margin: 0 auto;
+				background-color: #444;
+				color: #EEE;
+				transition: all 0.3s;
+				-moz-transition: all 0.3s;
+				-webkit-transition: all 0.3s;
+				-o-transition: all 0.3s;
+				-ms-transition: all 0.3s;
+			}
+			.button_download:hover{
+				width: 480px;
+				background-color: yellowgreen;
+				color: #444;
+			}
+			.step{ font-weight: bold; }
+        </style>
+        <title></title>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <script src="jquery.js" type="text/javascript"></script>
+        <script src="js/notifIt.js" type="text/javascript"></script>
+        <link href="css/notifIt.css" type="text/css" rel="stylesheet">
+    </head>
+    <body><div id="head"></div>
+        <div id="wrap">
+            <p class="title">notifIt!<span class="version">1.2</span></p>
+            <p class="subtitle">Notify what you want!</p>
+				</div>
+
+			<h2>
+<div id="wrap"><span class="step">Step 1 -</span> Try it! <a href="#step2">#done</a></div></h2>
+
+				<div id="wrap"><div id="step1"></div>
+            <pre onclick="not1()"><span class="f">notif(</span>{
+  msg: <span class="s">"&lt;b&gt;Success:&lt;/b&gt; In 5 seconds i'll be gone"</span>,
+  type: <span class="s">"success"</span>
+}<span class="f">)</span>;</pre>
+
+            <pre onclick="not2()"><span class="f">notif(</span>{
+  msg: <span class="s">"&lt;b&gt;Oops!&lt;/b&gt; A wild error appeared!"</span>,
+  type: <span class="s">"error"</span>,
+  position: <span class="s">"center"</span>
+}<span class="f">)</span>;</pre>
+
+            <pre onclick="not3()"><span class="f">notif(</span>{
+  type: <span class="s">"warning"</span>,
+  msg: <span class="s">"&lt;b&gt;Warning:&lt;/b&gt; Be patient my friend."</span>,
+  position: <span class="s">"left"</span>
+}<span class="f">)</span>;</pre>
+
+            <pre onclick="not4()"><span class="f">notif(</span>{
+  type: <span class="s">"info"</span>,
+  msg: <span class="s">"&lt;b&gt;Info:&lt;/b&gt; Some info here."</span>,
+  width: <span class="s">"all"</span>,
+  height: <span class="n">100</span>,
+  position: <span class="s">"center"</span>
+}<span class="f">)</span>;</pre>
+
+            <pre onclick="not5()"><span class="f">notif(</span>{
+  type: <span class="s">"error"</span>,
+  msg: <span class="s">"This error will stay here until you click it."</span>,
+  position: <span class="s">"center"</span>,
+  width: <span class="n">500</span>,
+  height: <span class="n">60</span>,
+  autohide: <span class="b">false</span>
+}<span class="f">)</span>;</pre>
+            <pre onclick="not6()"><span class="f">notif(</span>{
+  type: <span class="s">"warning"</span>,
+  msg: <span class="s">"Opacity is cool!"</span>,
+  position: <span class="s">"center"</span>,
+  opacity: <span class="n">0.8</span>
+}<span class="f">)</span>;</pre>
+
+            <pre onclick="not7()"><span class="f">notif(</span>{
+  type: <span class="s">"info"</span>,
+  msg: <span class="s">"Testing a multiline text. Testing, one, two.. yep."</span>,
+  position: <span class="s">"center"</span>,
+  width: <span class="n">100</span>,
+  autohide: <span class="b">false</span>,
+  multiline: <span class="b">true</span>
+}<span class="f">)</span>;</pre>
+
+            <pre onclick="not8()"><span class="f">notif(</span>{
+  type: <span class="s">"success"</span>,
+  msg: <span class="s">"Fade mode activated."</span>,
+  position: <span class="s">"right"</span>,
+  fade: <span class="b">true</span>
+}<span class="f">)</span>;</pre>
+
+            <pre onclick="not9()"><span class="f">notif(</span>{
+  msg: <span class="s">"Customize with your favourite color!"</span>,
+  position: <span class="s">"left"</span>,
+  bgcolor: <span class="s">"#294447"</span>,
+  color: <span class="s">"#F19C65"</span>
+}<span class="f">)</span>;</pre>
+
+<pre onclick="not10()"><span class="f">notif(</span>{
+  msg: <span class="s">"Customize the timeout!"</span>,
+  position: <span class="s">"left"</span>,
+  time: <span class="n">1000</span>
+}<span class="f">)</span>;</pre>
+</div>
+
+			<h2>
+<div id="wrap"><div id="step2"></div><span class="step">Step 2 -</span> Download it!</div></h2>
+
+<div id="wrap">
+			<a class="button_download" href="https://github.com/naoxink/notifIt/archive/master.zip">Now!</a>
+</div>
+
+			<h2>
+<div id="wrap"><span class="step">Step 3 -</span> Plug</div></h2>
+
+
+<div id="wrap">
+			<pre class="noclick"><span class="comment">// Include this in the &lt;head&gt;</span>
+<span class="tag">&lt;script</span> <span class="attr">type=</span><span class="string">"text/javascript"</span> <span class="attr">src=</span><span class="string">"js/notifIt.js"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;link</span> <span class="attr">rel=</span><span class="string">"stylesheet"</span> <span class="attr">type=</span><span class="string">"text/css"</span> <span class="attr">href=</span><span class="string">"css/notifIt.css"</span><span class="tag">&gt;</span></pre>
+</div>
+
+			<h2>
+<div id="wrap"><span class="step">Step 4 -</span> &amp; play <a href="#head">#first</a></div></h2>
+
+<div id="wrap">
+			<pre class="noclick"><b>notif(</b>{
+	msg: <span class="string">"&lt;b&gt;Oops!&lt;/b&gt; A wild error appeared!"</span>,
+	type: <span class="string">"error"</span>,
+	position: <span class="string">"center"</span>
+}<b>);</b></pre>
+            <footer>
+                <p>Developed by: <a href="http://twitter.com/naoxink">naoxink</a> @ 2013 | Get it now: <a href="https://github.com/naoxink/notifIt">GitHub</a></p>
+            </footer>
+        </div>
+    <script>
+        function not1(){
+            notif({
+				msg: "&lt;b&gt;Success:&lt;/b&gt; In 5 seconds i'll be gone",
+				type: "success"
+			});
+        }
+        function not2(){
+            notif({
+				msg: "&lt;b&gt;Oops!&lt;/b&gt; A wild error appeared!",
+				type: "error",
+				position: "center"
+			});
+        }
+        function not3(){
+            notif({
+				type: "warning",
+				msg: "&lt;b&gt;Warning:&lt;/b&gt; Be patient my friend.",
+				position: "left"
+			});
+        }
+        function not4(){
+            notif({
+				type: "info",
+				msg: "&lt;b&gt;Info: &lt;/b&gt;Some info here.",
+				width: "all",
+				height: 100,
+				position: "center"
+			});
+        }
+        function not5(){
+            notif({
+				type: "error",
+				msg: "This error will stay here until you click it.",
+				position: "center",
+				width: 500,
+				height: 60,
+				autohide: false
+			});
+        }
+		function not6(){
+			notif({
+				type: "warning",
+				msg: "Opacity is cool!",
+				position: "center",
+				opacity: 0.8
+			});
+		}
+	function not7(){
+			notif({
+				type: "info",
+				msg: "Testing a multiline text. Testing, one, two.. yep.",
+				position: "center",
+				width: 100,
+				autohide: false,
+				multiline: true
+			});
+		}
+	function not8(){
+			notif({
+				type: "success",
+				msg: "Fade mode activated.",
+				position: "right",
+				fade: true
+			});
+		}
+	function not9(){
+			notif({
+				msg: "Customize with your favourite color!",
+				position: "left",
+				bgcolor: "#294447",
+				color: "#F19C65"
+			});
+		}
+	function not10(){
+			notif({
+				type: "info",
+				msg: "Customize the timeout!",
+				position: "left",
+				timeout: 1000
+			});
+		}
+    </script>
+    
+
+</body></html>
