@@ -10,18 +10,23 @@ Easy to learn and use. Customize with your favorite colors, define the size you 
 #### Demo [here](http://naoxink.hol.es/notifIt)
 
 #### Configuration
-- **type** [String] success, error, warning, info
-- **msg** [String]
-- **position** [String] Left, center, right [optional]
-- **width** [Integer] [optional]
-- **height** [Integer] [optional]
-- **autohide** [Boolean] [optional]
-- **opacity** [Float] [From 0 to 1] [optional]
-- **multiline** [Boolean] [optional]
-- **fade** [Boolean] [optional]
-- **bgcolor** [String] [optional]
-- **color** [String] [optional]
-- **timeout** [Integer] [optional]
+
+Variable name|Type|Posible values
+---|---|---
+type|String|success, error, warning, info
+msg|String|Message
+position|String|left, center, right
+width|Integer-String|Number > 0, 'all'
+height|Integer|Number between 0 and 100
+autohide|Boolean|true, false
+opacity|Float|From 0 to 1
+multiline|Boolean|true, false
+fade|Boolean|true, false
+bgcolor|String|HEX color
+color|String|HEX color
+timeout|Integer|Miliseconds
+
+
 
 #### Plug
 ```html
