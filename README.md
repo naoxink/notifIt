@@ -26,7 +26,16 @@ bgcolor|`String`|HEX color|#444
 color|`String`|HEX color|#EEE
 timeout|`Integer`|Miliseconds|5000
 
-
+#### Structure
+```
+ notifIt!-1.1
+ ├── css
+ │   └── notifIt.css
+ ├── demo.html
+ ├── jquery.js
+ └── js
+     └── notifIt.js
+```
 
 #### Plug
 ```html
