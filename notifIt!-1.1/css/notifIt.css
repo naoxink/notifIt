@@ -3,11 +3,18 @@
     top: 10px;
     right: 10px;
     cursor: pointer;
-    -webkit-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
-    -o-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
     overflow: hidden;
+    -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+    -o-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+    -wekbit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+#ui_notifIt:hover{
+    opacity: 1 !important;
 }
 #ui_notifIt p{
     text-align: center;
@@ -18,7 +25,7 @@
 }
 
 /* Color setup */
-/* Configure this if you want */
+/* You are free to change all of this */
 .success{
     background-color: yellowgreen;
     color: white;
