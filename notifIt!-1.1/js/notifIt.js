@@ -88,41 +88,30 @@ function notif(config) {
     switch (defaults.position) {
         case "left":
             $("#ui_notifIt").css("left", parseInt(0 - (defaults.width * 2)));
+            $("#ui_notifIt").animate({left: 10});
             break;
         case "right":
             $("#ui_notifIt").css("right", parseInt(0 - (defaults.width * 2)));
+            $("#ui_notifIt").animate({right: 10});
             break;
         case "center":
             var mid = window.innerWidth / 2;
             $("#ui_notifIt").css("left", mid - parseInt(defaults.width / 2));
-            break;
-        default:
-            var mid = window.innerWidth / 2;
-            $("#ui_notifIt").css("left", mid - parseInt(defaults.width / 2));
-            break;
-    }
-
-    switch (position) {
-        case "center":
             $("#ui_notifIt").animate({top: 10});
             break;
-        case "right":
-            $("#ui_notifIt").animate({right: 10});
-            break;
-        case "left":
-            $("#ui_notifIt").animate({left: 10});
-            break;
         default:
+            var mid = window.innerWidth / 2;
+            $("#ui_notifIt").css("left", mid - parseInt(defaults.width / 2));
             $("#ui_notifIt").animate({right: 10});
             break;
     }
-
+    
     $("#ui_notifIt").click(function() {
         notifit_dismiss(to, defaults);
     });
 
     if (defaults.autohide) {
-            if (!isNaN(defaults.timeout)) {
+            if (!isNaN(defaults.timeout)) { // Take the timeout if is a number
                 to = setTimeout(function() {
                     $("#ui_notifIt").click();
                 }, defaults.timeout);
@@ -175,3 +164,7 @@ function notifit_dismiss(to, config) {
         });
     }
 }
+notif({
+    autohide: 0,
+    fade: 1
+});
