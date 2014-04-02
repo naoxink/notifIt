@@ -46,21 +46,6 @@ function notif(config) {
 
     $("#ui_notifIt").css("width", defaults.width);
 
-    switch (defaults.position) {
-        case "center":
-            $("#ui_notifIt").css("top", parseInt(0 - (defaults.height + 10)));
-            break;
-        case "right":
-            $("#ui_notifIt").css("right", parseInt(0 - (defaults.width + 10)));
-            break;
-        case "left":
-            $("#ui_notifIt").css("left", parseInt(0 - (defaults.width + 10)));
-            break;
-        default:
-            $("#ui_notifIt").css("right", parseInt(0 - (defaults.width + 10)));
-            break;
-    }
-
     $("#ui_notifIt").css("opacity", defaults.opacity);
 
     switch (defaults.type) {
@@ -84,23 +69,27 @@ function notif(config) {
     $("#ui_notifIt").css("background-color", defaults.bgcolor);
     
     $("#ui_notifIt").css("color", defaults.color);
-
+    
     switch (defaults.position) {
         case "left":
+            $("#ui_notifIt").css("left", parseInt(0 - (defaults.width + 10)));
             $("#ui_notifIt").css("left", parseInt(0 - (defaults.width * 2)));
             $("#ui_notifIt").animate({left: 10});
             break;
         case "right":
+            $("#ui_notifIt").css("right", parseInt(0 - (defaults.width + 10)));
             $("#ui_notifIt").css("right", parseInt(0 - (defaults.width * 2)));
             $("#ui_notifIt").animate({right: 10});
             break;
         case "center":
             var mid = window.innerWidth / 2;
+            $("#ui_notifIt").css("top", parseInt(0 - (defaults.height + 10)));
             $("#ui_notifIt").css("left", mid - parseInt(defaults.width / 2));
             $("#ui_notifIt").animate({top: 10});
             break;
         default:
             var mid = window.innerWidth / 2;
+            $("#ui_notifIt").css("right", parseInt(0 - (defaults.width + 10)));
             $("#ui_notifIt").css("left", mid - parseInt(defaults.width / 2));
             $("#ui_notifIt").animate({right: 10});
             break;
@@ -165,6 +154,6 @@ function notifit_dismiss(to, config) {
     }
 }
 notif({
-    autohide: 0,
-    fade: 1
+    position: "left",
+    autohide: 0
 });
