@@ -22,9 +22,9 @@ function notif(config) {
     position = defaults.position;
 
     if (defaults.width > 0) {
-        width = defaults.width;
+        defaults.width = defaults.width;
     } else if (defaults.width === "all") {
-        width = screen.width - 60;
+        defaults.width = screen.width - 60;
     }
 
     if (defaults.height < 100 && defaults.height > 0) {
@@ -154,6 +154,7 @@ function notifit_dismiss(to, config) {
     }
 }
 notif({
-    position: "left",
-    autohide: 0
+    position: "center",
+    autohide: 0,
+    width: "all"
 });
