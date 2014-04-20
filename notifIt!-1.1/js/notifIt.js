@@ -153,8 +153,10 @@ function notifit_dismiss(to, config) {
         });
     }
 }
+/*
 notif({
     position: "center",
     autohide: 0,
     width: "all"
 });
+*/
