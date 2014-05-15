@@ -82,13 +82,13 @@ function notif(config) {
             $("#ui_notifIt").animate({right: 10});
             break;
         case "center":
-            var mid = window.innerWidth / 2;
+            var mid = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) / 2;
             $("#ui_notifIt").css("top", parseInt(0 - (defaults.height + 10)));
             $("#ui_notifIt").css("left", mid - parseInt(defaults.width / 2));
             $("#ui_notifIt").animate({top: 10});
             break;
         default:
-            var mid = window.innerWidth / 2;
+            var mid = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) / 2;
             $("#ui_notifIt").css("right", parseInt(0 - (defaults.width + 10)));
             $("#ui_notifIt").css("left", mid - parseInt(defaults.width / 2));
             $("#ui_notifIt").animate({right: 10});
