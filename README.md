@@ -15,7 +15,7 @@ Variable name|Type|Posible values|Default
 ---|---|---|---
 type|`String`|success, error, warning, info|default
 msg|`String`|Message|
-position|`String`|left, center, right|right
+position|`String`|left, center, right, bottom|right
 width|`Integer`-`String`|Number > 0, 'all'|400
 height|`Integer`|Number between 0 and 100|60
 autohide|`Boolean`|true, false|true
@@ -25,6 +25,8 @@ fade|`Boolean`|true, false|false
 bgcolor|`String`|HEX color|#444
 color|`String`|HEX color|#EEE
 timeout|`Integer`|Miliseconds|5000
+zindex|`Integer`|The z-index of the notification|null (ignored)
+offset|`Integer`|The offset in pixels from the edge of the screen|0
 
 #### Structure
 ```
