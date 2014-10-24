@@ -15,7 +15,7 @@ Variable name|Type|Posible values|Default
 ---|---|---|---
 type|`String`|success, error, warning, info|default
 msg|`String`|Message|
-position|`String`|left, center, right|right
+position|`String`|left, center, right, bottom|right
 width|`Integer`-`String`|Number > 0, 'all'|400
 height|`Integer`|Number between 0 and 100|60
 autohide|`Boolean`|true, false|true
