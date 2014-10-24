@@ -15,7 +15,8 @@ function notif(config) {
         fade: 0,
         bgcolor: "",
         color: "",
-        timeout: 5000
+        timeout: 5000,
+        zindex: null
     };
     $.extend(defaults, config);
     
@@ -36,6 +37,9 @@ function notif(config) {
     clearInterval(to);
     $("body").append(div);
 
+    if ( defaults.zindex ) {
+        $("#ui_notifIt").css("z-index", defaults.zindex);
+    }
 
     if (defaults.multiline) {
         $("#ui_notifIt").css("padding", 15);

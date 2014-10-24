@@ -25,6 +25,7 @@ fade|`Boolean`|true, false|false
 bgcolor|`String`|HEX color|#444
 color|`String`|HEX color|#EEE
 timeout|`Integer`|Miliseconds|5000
+zindex|`Integer`|The z-index of the notification|null (ignored)
 
 #### Structure
 ```
