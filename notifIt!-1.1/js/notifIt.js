@@ -16,7 +16,8 @@ function notif(config) {
         bgcolor: "",
         color: "",
         timeout: 5000,
-        zindex: null
+        zindex: null,
+        offset: 0
     };
     $.extend(defaults, config);
     
@@ -78,24 +79,24 @@ function notif(config) {
         case "left":
             $("#ui_notifIt").css("left", parseInt(0 - (defaults.width + 10)));
             $("#ui_notifIt").css("left", parseInt(0 - (defaults.width * 2)));
-            $("#ui_notifIt").animate({left: 10});
+            $("#ui_notifIt").animate({left: parseInt(10 + defaults.offset)});
             break;
         case "right":
             $("#ui_notifIt").css("right", parseInt(0 - (defaults.width + 10)));
             $("#ui_notifIt").css("right", parseInt(0 - (defaults.width * 2)));
-            $("#ui_notifIt").animate({right: 10});
+            $("#ui_notifIt").animate({right: parseInt(10 + defaults.offset)});
             break;
         case "center":
             var mid = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) / 2;
             $("#ui_notifIt").css("top", parseInt(0 - (defaults.height + 10)));
             $("#ui_notifIt").css("left", mid - parseInt(defaults.width / 2));
-            $("#ui_notifIt").animate({top: 10});
+            $("#ui_notifIt").animate({top: parseInt(10 + defaults.offset)});
             break;
         default:
             var mid = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) / 2;
             $("#ui_notifIt").css("right", parseInt(0 - (defaults.width + 10)));
             $("#ui_notifIt").css("left", mid - parseInt(defaults.width / 2));
-            $("#ui_notifIt").animate({right: 10});
+            $("#ui_notifIt").animate({right: parseInt(10 + defaults.offset)});
             break;
     }
     
