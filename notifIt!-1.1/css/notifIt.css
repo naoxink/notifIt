@@ -12,6 +12,7 @@
     -moz-border-radius: 5px;
     -o-border-radius: 5px;
     border-radius: 5px;
+    z-index: 2000;
 }
 #ui_notifIt:hover{
     opacity: 1 !important;
