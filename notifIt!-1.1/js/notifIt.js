@@ -18,7 +18,8 @@ function notif(config) {
         timeout: 5000,
         zindex: null,
         offset: 0,
-		callback: null
+		callback: null,
+		clickable: false
     };
     jQuery.extend(defaults, config);
 
@@ -112,14 +113,16 @@ function notif(config) {
             break;
     }
     
-    jQuery("#ui_notifIt").click(function() {
-        notifit_dismiss(to, defaults);
-    });
+	if(!defaults.clickable){
+		jQuery("#ui_notifIt").click(function() {
+		    notifit_dismiss(to, defaults);
+		});
+	}
 
     if (defaults.autohide) {
             if (!isNaN(defaults.timeout)) { // Take the timeout if is a number
                 to = setTimeout(function() {
-                    jQuery("#ui_notifIt").click();
+                   notifit_dismiss(to, defaults);
                 }, defaults.timeout);
             }
         
@@ -128,6 +131,7 @@ function notif(config) {
 
 function notifit_dismiss(to, config) {
     clearInterval(to);
+
     if (!config.fade) {
 		var animation1 = {},
 			animation2 = {};
