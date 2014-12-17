@@ -119,6 +119,10 @@ function notif(config) {
 		});
 	}
 
+	jQuery('body').on('click', '#ui_notifIt #notifIt_close', function() {
+	    notifit_dismiss(to, defaults);
+	});
+
     if (defaults.autohide) {
             if (!isNaN(defaults.timeout)) { // Take the timeout if is a number
                 to = setTimeout(function() {
