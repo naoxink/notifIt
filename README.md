@@ -27,7 +27,8 @@ color|`String`|HEX color|#EEE
 timeout|`Integer`|Miliseconds|5000
 zindex|`Integer`|The z-index of the notification|null (ignored)
 offset|`Integer`|The offset in pixels from the edge of the screen|0
-callback|`Function`|Function to execute at the end|null (ignored)
+callback|`Function`|Function|null (ignored),
+clickable|`Boolean`|true, false|false
 
 #### Structure
 ```
@@ -43,8 +44,8 @@ callback|`Function`|Function to execute at the end|null (ignored)
 #### Plug
 ```html
 <head>
-	<script type="text/javascript" src="js/notifIt.js">
-	<link rel="stylesheet" type="text/css" href="css/notifIt.css">
+	<script type='text/javascript' src='js/notifIt.js'></script>
+	<link rel='stylesheet' type='text/css' href='css/notifIt.css'>
 </head>
 ```
 
