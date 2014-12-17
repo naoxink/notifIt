@@ -7,7 +7,7 @@ Simple notifications with JQuery.
 Now you can send notifications of everything you want and when you want, simply and quickly.
 Easy to learn and use. Customize with your favorite colors, define the size you want, set the opacity, make a sticky one and much more!
 
-#### Demo [here](http://naoxink.hol.es/notifIt)
+#### Demo [here](http://naoxink.hol.es/notifIt) (some examples)
 
 #### Configuration
 
@@ -27,6 +27,7 @@ color|`String`|HEX color|#EEE
 timeout|`Integer`|Miliseconds|5000
 zindex|`Integer`|The z-index of the notification|null (ignored)
 offset|`Integer`|The offset in pixels from the edge of the screen|0
+callback|`Function`|Function to execute at the end|null (ignored)
 
 #### Structure
 ```
