@@ -17,9 +17,14 @@ function notif(config) {
         color: "",
         timeout: 5000,
         zindex: null,
-        offset: 0
+        offset: 0,
+		callback: null
     };
     jQuery.extend(defaults, config);
+
+	if(typeof defaults.callback !== 'function'){
+		defaults.callback = null;
+	}
     
     position = defaults.position;
 
@@ -124,55 +129,57 @@ function notif(config) {
 function notifit_dismiss(to, config) {
     clearInterval(to);
     if (!config.fade) {
+		var animation1 = {},
+			animation2 = {};
         switch(config.position){
             case "center":
-                jQuery("#ui_notifIt").animate({
+				animation1 = {
                     top: parseInt(config.height - (config.height / 2))
-                }, 100, function() {
-                    jQuery("#ui_notifIt").animate({
-                        top: parseInt(0 - (config.height * 2))
-                    }, 100, function() {
-                        jQuery("#ui_notifIt").remove();
-                    });
-                });
+                };
+				animation2 = {
+                    top: parseInt(0 - (config.height * 2))
+                };
             break;
             case "bottom":
-                jQuery("#ui_notifIt").animate({
+				animation1 = {
                     bottom: parseInt(config.height - (config.height / 2))
-                }, 100, function() {
-                    jQuery("#ui_notifIt").animate({
-                        bottom: parseInt(0 - (config.height * 2))
-                    }, 100, function() {
-                        jQuery("#ui_notifIt").remove();
-                    });
-                });
+                };
+				animation2 = {
+                    bottom: parseInt(0 - (config.height * 2))
+                };
             break;
             case "right":
-                jQuery("#ui_notifIt").animate({
+				animation1 = {
                     right: parseFloat(config.width - (config.width * 0.9))
-                }, 100, function() {
-                    jQuery("#ui_notifIt").animate({
-                        right: parseInt(0 - (config.width * 2))
-                    }, 100, function() {
-                        jQuery("#ui_notifIt").remove();
-                    });
-                });
+                };
+				animation2 = {
+                    right: parseInt(0 - (config.width * 2))
+                };
             break;
             case "left":
-                jQuery("#ui_notifIt").animate({
+				animation1 = {
                     left: parseFloat(config.width - (config.width * 0.9))
-                }, 100, function() {
-                    jQuery("#ui_notifIt").animate({
-                        left: parseInt(0 - (config.width * 2))
-                    }, 100, function() {
-                        jQuery("#ui_notifIt").remove();
-                    });
-                });
+                };
+				animation2 = {
+                    left: parseInt(0 - (config.width * 2))
+                };
             break;
         }
+		// Execute animations		
+        jQuery("#ui_notifIt").animate(animation1, 100, function() {
+            jQuery("#ui_notifIt").animate(animation2, 100, function() {
+                jQuery("#ui_notifIt").remove();
+				if(config.callback){
+					config.callback();
+				}
+            });
+        });
     } else {
         jQuery("#ui_notifIt").fadeOut("slow", function() {
             jQuery("#ui_notifIt").remove();
+			if(config.callback){
+				config.callback();
+			}
         });
     }
 }
