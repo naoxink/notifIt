@@ -114,7 +114,8 @@ function notif(config) {
     }
     
 	if(!defaults.clickable){
-		jQuery("#ui_notifIt").click(function() {
+		jQuery("#ui_notifIt").click(function(e) {
+		    e.stopPropagation();
 		    notifit_dismiss(to, defaults);
 		});
 	}
