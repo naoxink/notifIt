@@ -1,0 +1,21 @@
+{
+    "name": "notifIt",
+    "version": "1.1",
+    "homepage": "https://github.com/naoxink",
+    "authors": [
+        "naoxink"
+    ],
+    "main": [
+        "notifIt!-1.1/js/notifIt.js",
+        "notifIt!-1.1/css/notifIt.css"
+    ],
+    "description": "Simple colorful animated notifications with JQuery",
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ]
+}
