@@ -1,6 +1,18 @@
 /*
  * notifIt! by @naoxink
  */
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(factory);
+    } else {
+        // Browser globals
+        var package = factory(root.b);
+        root.notif = package.notif;
+        root.notifit_dismiss = package.notifit_dismiss;
+    }
+}(this, function () {
+    
 function notif(config) {
     var to = null;
     var defaults = {
@@ -192,3 +204,10 @@ function notifit_dismiss(to, config) {
         });
     }
 }
+
+return {
+    notif: notif,
+    notifit_dismiss: notifit_dismiss
+};
+
+}));
