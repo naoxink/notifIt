@@ -27,23 +27,23 @@
 
 /* Color setup */
 /* You are free to change all of this */
-.success{
+#ui_notifIt.success{
     background-color: yellowgreen;
     color: white;
 }
-.error{
+#ui_notifIt.error{
     background-color: orangered;
     color: white;
 }
-.warning{
+#ui_notifIt.warning{
     background-color: orange;
     color: white;
 }
-.info{
+#ui_notifIt.info{
     background-color: deepskyblue;
     color: white;
 }
-.default{
+#ui_notifIt.default{
     background-color: #EEE;
     color: #444;
 }
