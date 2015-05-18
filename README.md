@@ -32,7 +32,7 @@ clickable|`Boolean`|true, false|false
 
 #### Structure
 ```
- notifIt!-1.1
+ notifIt
  ├── css
  │   └── notifIt.css
  ├── demo.html
