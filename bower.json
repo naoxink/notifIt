@@ -6,8 +6,8 @@
         "naoxink"
     ],
     "main": [
-        "notifIt!-1.1/js/notifIt.js",
-        "notifIt!-1.1/css/notifIt.css"
+        "notifIt/js/notifIt.js",
+        "notifIt/css/notifIt.css"
     ],
     "description": "Simple colorful animated notifications with JQuery",
     "license": "MIT",
