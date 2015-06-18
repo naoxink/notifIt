@@ -80,10 +80,6 @@
             $("#ui_notifIt").remove();
             clearInterval(to);
         }
-        this._create = function() {
-            $("body").append(div);
-            _setCss();
-        }
         this._setCss = function() {
             if (defaults.zindex) {
                 $("#ui_notifIt").css("z-index", defaults.zindex);
