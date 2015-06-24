@@ -14,6 +14,7 @@
         if(!window.notifs){
             window.notifs = [];
         }
+        var to = null;
         var height = 0;
         var options = {};
         var defaults = {};
@@ -208,6 +209,11 @@
         clearInterval(window.notifs[index].timeout);
         window.notifs[index].timeout = null;
         var id = window.notifs[index].id;
+
+
+        this._removeOne = function(index){
+            window.notifs.splice(index, 1)
+        }
 
         if (!config.fade) {
             var animation1 = {},
