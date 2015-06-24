@@ -37,7 +37,8 @@ append (dev)|`Boolean`|true, false|false
  ├── css
  │   └── notifIt.css
  ├── demo.html
- ├── jquery.js
+ ├── dev
+ │   └── notifIt.js
  └── js
      └── notifIt.js
 ```
