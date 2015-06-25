@@ -206,7 +206,7 @@
 
     function notifit_dismiss(index, config) {
 
-        clearInterval(window.notifs[index].timeout);
+        clearTimeout(window.notifs[index].timeout);
         window.notifs[index].timeout = null;
         var id = window.notifs[index].id;
 
