@@ -147,7 +147,7 @@ function notif(config) {
 }
 
 function notifit_dismiss(to, config) {
-    clearInterval(to);
+    clearTimeout(to);
 
     if (!config.fade) {
 		var animation1 = {},
