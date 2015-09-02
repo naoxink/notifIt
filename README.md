@@ -40,7 +40,7 @@ append (dev)|`Boolean`|true, false|false
  ├── dev
  │   └── notifIt.js
  └── js
-     └── notifIt.js
+     ├── notifIt.js
      └── notifIt.min.js
 ```
 
