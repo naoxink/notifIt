@@ -41,6 +41,7 @@ append (dev)|`Boolean`|true, false|false
  │   └── notifIt.js
  └── js
      └── notifIt.js
+     └── notifIt.min.js
 ```
 
 #### Plug
