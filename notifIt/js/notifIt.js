@@ -93,7 +93,7 @@
                 },
                 'out': {
                     'start': {
-                        'top': parseInt(defaults.height - (defaults.height / 2))
+                        'bottom': parseInt(defaults.height - (defaults.height / 2))
                     },
                     'end': {
                         'bottom': parseInt(0 - (defaults.height * 2))
