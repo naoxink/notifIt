@@ -1,6 +1,7 @@
 notifIt!
 =
 
+## notif()
 #### Description
 Simple notifications with JQuery.
 
@@ -62,8 +63,8 @@ clickable|`Boolean`|true, false|false
 append (dev)|`Boolean`|true, false|false
 
 
-### Confirm
-
+## notif_confirm()
+### Description
 Now you can ask 'yes' or 'no' easy as --
 ```javascript
 var myCallback = function(choice){
