@@ -83,14 +83,12 @@ var myCallback = function(choice){
     }
 }
 
-function confirm(){
-    notif_confirm({
-        'textaccept': 'Let\'s go!',
-        'textcancel': 'I\'ll think about it',
-        'message': 'Shall we?',
-        'callback': myCallback
-    })
-}
+notif_confirm({
+'textaccept': 'Let\'s go!',
+'textcancel': 'I\'ll think about it',
+'message': 'Shall we?',
+'callback': myCallback
+})
 ```
 
 #### Configuration
