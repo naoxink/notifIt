@@ -10,6 +10,7 @@
         var package = factory(root.b);
         root.notif = package.notif;
         root.notifit_dismiss = package.notifit_dismiss;
+        root.notif_confirm = package.notif_confirm;
     }
 }(this, function() {
     function notif(config) {
@@ -300,7 +301,6 @@
             'destroy': destroy
         }
     }
-
     function notifit_dismiss(config) {
         clearTimeout(window.notifit_timeout);
         if (config.animation != 'fade') {
@@ -333,8 +333,90 @@
             });
         }
     }
+    function notif_confirm(config){
+        var $ = jQuery
+        var _config = {
+            'textaccept': 'Accept',
+            'textcancel': 'Cancel',
+            'message': 'Is that what you want to do?',
+            'callback': null
+        }
+        var settings = $.extend({  }, _config, config)
+        var $confirm = $('.notifit_confirm')[0] || null
+        var $bg = $('.notifit_confirm_bg')[0] || null
+
+        function _create(){
+            if($confirm !== null){
+                return $confirm
+            }
+            var $acceptButton = $('<button>', {
+                'class': 'notifit_confirm_accept',
+                'text': settings.textaccept
+            })
+            var $cancelButton = $('<button>', {
+                'class': 'notifit_confirm_cancel',
+                'text': settings.textcancel
+            })
+            var $message = $('<div>', {
+                'class': 'notifit_confirm_message',
+                'text': settings.message
+            })
+            $confirm = $('<div>', {
+                'class': 'notifit_confirm'
+            })
+            $confirm
+                .append($message)
+                .append($acceptButton)
+                .append($cancelButton)
+            $bg = $('<div>', { 'class': 'notifit_confirm_bg' })
+            return $confirm
+        }
+        function _show(){
+            if($confirm){
+                $('body').append($bg)
+                $('body').append($confirm)
+                $confirm.css({
+                    'top': $bg.outerHeight() / 2 - ($confirm.outerHeight() / 2),
+                    'left': $bg.outerWidth() / 2 - ($confirm.outerWidth() / 2)
+                })
+            }
+        }
+        function _hide(){
+            if($confirm){
+                $confirm.remove()
+            }
+            if($bg){
+                $bg.remove()
+            }
+        }
+        function _callback(){
+            _hide()
+            var response = null
+            if($(this).hasClass('notifit_confirm_accept')){
+                response = true
+            }else if($(this).hasClass('notifit_confirm_cancel')){
+                response = false
+            }
+            if(typeof settings.callback === 'function'){
+                return settings.callback(response)
+            }
+            return response
+        }
+        function _setListeners(){
+            $('html').one('click', '.notifit_confirm_accept, .notifit_confirm_cancel', _callback)
+        }
+
+        // Get the party started! \o/
+        _create()
+        _show()
+        _setListeners()
+    }
+    function notif_prompt(config){
+        // TODO
+    }
     return {
         notif: notif,
-        notifit_dismiss: notifit_dismiss
+        notifit_dismiss: notifit_dismiss,
+        notif_confirm: notif_confirm
     };
 }));
