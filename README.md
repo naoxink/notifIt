@@ -101,3 +101,7 @@ textaccept|`String`|Accept|Yes
 textcancel|`String`|Cancel|Yes
 message|`String`|Is that what you want to do?|Yes
 callback|`Function`|null|Yes
+
+#### Response
+Function returns `true` or `false`
+If callback is passed, it recieves a param `true` or `false`
