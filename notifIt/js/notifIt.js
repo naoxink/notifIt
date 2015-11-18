@@ -248,7 +248,7 @@
         // Remove div before appending, we don't want to duplicate
         var destroy = function() {
             $("#ui_notifIt").remove();
-            clearInterval(window.notifit_timeout);
+            clearTimeout(window.notifit_timeout);
         }
         destroy();
         $("body").append(div);
