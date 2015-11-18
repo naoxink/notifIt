@@ -1,14 +1,12 @@
 notifIt!
 =
 
-## notif()
-#### Description
 Simple notifications with JQuery.
 
 Now you can send notifications of everything you want and when you want, simply and quickly.
 Easy to learn and use. Customize with your favorite colors, define the size you want, set the opacity, make a sticky one and much more!
 
-#### Demo [here](http://naoxink.hol.es/notifIt) (some examples)
+#### Give it a try! [Demo](http://naoxink.hol.es/notifIt)
 
 #### Structure
 ```
@@ -40,6 +38,8 @@ notif({
 });
 ```
 
+## `notif()`
+
 #### Configuration
 
 Variable name|Type|Posible values|Default
@@ -63,7 +63,7 @@ clickable|`Boolean`|true, false|false
 append (dev)|`Boolean`|true, false|false
 
 
-## notif_confirm()
+## `notif_confirm()`
 ### Description
 Now you can ask 'yes' or 'no' easy as --
 ```javascript
@@ -103,3 +103,9 @@ callback|`Function`|null|Yes
 #### Response
 Function returns `true` or `false`
 If callback is passed, it recieves a param `true` or `false`
+
+
+### TODO list
+- [x] Confirm modal
+- [ ] Prompt modal
+- [ ] Remove jQuery dependency (translate to pure js)
