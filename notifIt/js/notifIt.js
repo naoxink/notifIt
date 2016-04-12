@@ -9,7 +9,7 @@
         // Browser globals
         var package = factory(root.b);
         root.notif = package.notif;
-        root.notifit_dismiss = package.notifit_dismiss;
+        root.notif_dismiss = package.notif_dismiss;
         root.notif_confirm = package.notif_confirm;
     }
 }(this, function() {
@@ -30,11 +30,16 @@
                 });
                 div.append(p);
                 return div;
-            }
-            // Global timeout
-        window.notifit_timeout = null;
+        }
         // We love jQuery
         var $ = jQuery;
+        var destroy = function() {
+            $("#ui_notifIt").remove();
+            clearTimeout(window.notifit_timeout);
+        }
+        destroy()
+        // Global timeout
+        window.notifit_timeout = null;
         // Mid position
         var mid = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) / 2;
         // Available positions
@@ -245,12 +250,6 @@
         if (defaults.clickable) {
             div.append(create_close_button())
         }
-        // Remove div before appending, we don't want to duplicate
-        var destroy = function() {
-            $("#ui_notifIt").remove();
-            clearTimeout(window.notifit_timeout);
-        }
-        destroy();
         $("body").append(div);
         // Set z-index
         if (defaults.zindex) {
@@ -284,16 +283,16 @@
         if (!defaults.clickable) {
             $("#ui_notifIt").click(function(e) {
                 e.stopPropagation();
-                notifit_dismiss(defaults);
+                notif_dismiss(defaults);
             });
         }
         $('body').on('click', '#ui_notifIt #notifIt_close', function() {
-            notifit_dismiss(defaults);
+            notif_dismiss(defaults);
         });
         if (defaults.autohide) {
             if (!isNaN(defaults.timeout)) {
                 window.notifit_timeout = setTimeout(function() {
-                    notifit_dismiss(defaults);
+                    notif_dismiss(defaults);
                 }, defaults.timeout);
             }
         }
@@ -301,14 +300,23 @@
             'destroy': destroy
         }
     }
-    function notifit_dismiss(config) {
+    function notif_dismiss(config) {
         clearTimeout(window.notifit_timeout);
         if (config.animation != 'fade') {
             // Set animations
-            if (config.animations && config.animations[config.animation] && config.animations[config.animation][config.position] && config.animations[config.animation][config.position].out && config.animations[config.animation][config.position].out.start && config.animations[config.animation][config.position].out.end) {
+            if (config.animations && 
+                config.animations[config.animation] && 
+                config.animations[config.animation][config.position] && 
+                config.animations[config.animation][config.position].out && 
+                config.animations[config.animation][config.position].out.start && 
+                config.animations[config.animation][config.position].out.end) {
                 animation1 = config.animations[config.animation][config.position].out.start
                 animation2 = config.animations[config.animation][config.position].out.end
-            } else if (config.animations[config.available_animations[0]] && config.animations[config.available_animations[0]][config.position] && config.animations[config.available_animations[0]][config.position].out && config.animations[config.available_animations[0]][config.position].out.start && config.animations[config.available_animations[0]][config.position].out.end) {
+            } else if (config.animations[config.available_animations[0]] && 
+                config.animations[config.available_animations[0]][config.position] && 
+                config.animations[config.available_animations[0]][config.position].out && 
+                config.animations[config.available_animations[0]][config.position].out.start && 
+                config.animations[config.available_animations[0]][config.position].out.end) {
                 animation1 = config.animations[config.available_animations[0]][config.position].out.start
                 animation2 = config.animations[config.available_animations[0]][config.position].out.end
             } else {
@@ -339,6 +347,7 @@
             'textaccept': 'Accept',
             'textcancel': 'Cancel',
             'message': 'Is that what you want to do?',
+            'fullscreen': false,
             'callback': null
         }
         var settings = $.extend({  }, _config, config)
@@ -373,20 +382,38 @@
         }
         function _show(){
             if($confirm){
-                $('body').append($bg)
-                $('body').append($confirm)
-                $confirm.css({
-                    'top': $bg.outerHeight() / 2 - ($confirm.outerHeight() / 2),
-                    'left': $bg.outerWidth() / 2 - ($confirm.outerWidth() / 2)
-                })
+                if(settings.fullscreen){
+                    $bg.hide()
+                    $confirm.hide()
+                    $('body').append($bg)
+                    $('body').append($confirm)
+                    $confirm.css({
+                        'top': $bg.outerHeight() / 2 - ($confirm.outerHeight() / 2),
+                        'left': $bg.outerWidth() / 2 - ($confirm.outerWidth() / 2)
+                    })
+                    $bg.fadeIn('fast', function(){ $confirm.slideDown('fast') })
+                }else{
+                    $confirm.css({
+                        'top': '20px',
+                        'left': 'auto',
+                        'right': '20px',
+                        'display': 'none'
+                    })
+                    $('body').append($confirm)
+                    $confirm.slideDown('fast')
+                }
             }
         }
         function _hide(){
             if($confirm){
-                $confirm.remove()
+                $confirm.slideUp('fast', function(){
+                    $confirm.remove()
+                })
             }
             if($bg){
-                $bg.remove()
+                $bg.fadeOut('fast', function(){
+                    $bg.remove()
+                })
             }
         }
         function _callback(){
@@ -416,7 +443,7 @@
     }
     return {
         notif: notif,
-        notifit_dismiss: notifit_dismiss,
+        notif_dismiss: notif_dismiss,
         notif_confirm: notif_confirm
     };
 }));
