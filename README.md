@@ -106,7 +106,8 @@ Function returns `true` or `false`
 If callback is passed, it recieves a param `true` or `false`
 
 
-### TODO list
-- [x] Confirm modal
-- [ ] Prompt modal
-- [ ] Remove jQuery dependency (translate to pure js)
+#### More things :)
+[bgfader](https://github.com/naoxink/bgfader)
+[Sublime text color scheme](https://github.com/naoxink/nxk-sublime-color-scheme)
+[asdText](https://github.com/naoxink/asdText)
+[View more](https://github.com/naoxink?tab=repositories)
