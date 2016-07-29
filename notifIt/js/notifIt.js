@@ -351,8 +351,8 @@
             'callback': null
         }
         var settings = $.extend({  }, _config, config)
-        var $confirm = $('.notifit_confirm')[0] || null
-        var $bg = $('.notifit_confirm_bg')[0] || null
+        var $confirm = $('.notifit_confirm')[0] ? $('.notifit_confirm') : null;
+        var $bg = $('.notifit_confirm_bg')[0] ? $('.notifit_confirm_bg') : null;
 
         function _create(){
             if($confirm !== null){
