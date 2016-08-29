@@ -301,6 +301,7 @@
         }
     }
     function notif_dismiss(config) {
+        var $ = jQuery;
         clearTimeout(window.notifit_timeout);
         if (config.animation != 'fade') {
             // Set animations
