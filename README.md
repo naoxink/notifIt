@@ -106,9 +106,9 @@ Function returns `true` or `false`
 If callback is passed, it recieves a param `true` or `false`
 
 
-## `notif_confirm()`
+## `notif_prompt()`
 ### Description
-Now you can ask 'yes' or 'no' easy as --
+Ask whatever you want quick and easy
 ```javascript
 var myCallback = function(input_value){
     if(input_value){
