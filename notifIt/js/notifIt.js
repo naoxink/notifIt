@@ -9,10 +9,13 @@
         // Browser globals
         var package = factory(root.b);
         root.notif = package.notif;
-        root.notif_dismiss = package.notif_dismiss;
         root.notif_confirm = package.notif_confirm;
+        root.notif_prompt  = package.notif_prompt;
     }
 }(this, function() {
+
+
+    // Notification
     function notif(config) {
         // Util stuff
         var create_close_button = function() {
@@ -36,6 +39,47 @@
         var destroy = function() {
             $("#ui_notifIt").remove();
             clearTimeout(window.notifit_timeout);
+        }
+        var dismiss = function(){
+            clearTimeout(window.notifit_timeout);
+            if (!defaults.fade) {
+                // Set animations
+                if (defaults.animations && 
+                    defaults.animations[defaults.animation] && 
+                    defaults.animations[defaults.animation][defaults.position] && 
+                    defaults.animations[defaults.animation][defaults.position].out && 
+                    defaults.animations[defaults.animation][defaults.position].out.start && 
+                    defaults.animations[defaults.animation][defaults.position].out.end) {
+                    animation1 = defaults.animations[defaults.animation][defaults.position].out.start
+                    animation2 = defaults.animations[defaults.animation][defaults.position].out.end
+                } else if (defaults.animations[defaults.available_animations[0]] && 
+                    defaults.animations[defaults.available_animations[0]][defaults.position] && 
+                    defaults.animations[defaults.available_animations[0]][defaults.position].out && 
+                    defaults.animations[defaults.available_animations[0]][defaults.position].out.start && 
+                    defaults.animations[defaults.available_animations[0]][defaults.position].out.end) {
+                    animation1 = defaults.animations[defaults.available_animations[0]][defaults.position].out.start
+                    animation2 = defaults.animations[defaults.available_animations[0]][defaults.position].out.end
+                } else {
+                    throw new Error('Invalid animation')
+                }
+                // Execute animations       
+                $("#ui_notifIt").animate(animation1, 100, function() {
+                    $("#ui_notifIt").animate(animation2, 100, function() {
+                        $("#ui_notifIt").remove();
+                        if (defaults.callback) {
+                            defaults.callback();
+                        }
+                    });
+                });
+            } else {
+                // jQuery's fade, why create my own?
+                $("#ui_notifIt").fadeOut("slow", function() {
+                    $("#ui_notifIt").remove();
+                    if (defaults.callback) {
+                        defaults.callback();
+                    }
+                });
+            }
         }
         destroy()
         // Global timeout
@@ -241,8 +285,8 @@
         } else {
             defaults.width = 400;
         }
-        if (defaults.height < 100 && defaults.height > 0) {
-            height = defaults.height;
+        if (defaults.height > 100 || defaults.height < 0) {
+            defaults.height = 60;
         }
         // Create notification itself
         var div = create_notification()
@@ -259,8 +303,8 @@
         if (defaults.multiline) {
             $("#ui_notifIt").css("padding", 15);
         } else {
-            $("#ui_notifIt").css("height", height);
-            $("#ui_notifIt p").css("line-height", height + "px");
+            $("#ui_notifIt").css("height", defaults.height);
+            $("#ui_notifIt p").css("line-height", defaults.height + "px");
         }
         // Basic css
         $("#ui_notifIt").css({
@@ -283,65 +327,26 @@
         if (!defaults.clickable) {
             $("#ui_notifIt").click(function(e) {
                 e.stopPropagation();
-                notif_dismiss(defaults);
+                dismiss(defaults);
             });
         }
         $('body').on('click', '#ui_notifIt #notifIt_close', function() {
-            notif_dismiss(defaults);
+            dismiss(defaults);
         });
         if (defaults.autohide) {
             if (!isNaN(defaults.timeout)) {
                 window.notifit_timeout = setTimeout(function() {
-                    notif_dismiss(defaults);
+                    dismiss(defaults);
                 }, defaults.timeout);
             }
         }
         return {
-            'destroy': destroy
+            'destroy': destroy,
+            'dismiss': dismiss
         }
     }
-    function notif_dismiss(config) {
-        var $ = jQuery;
-        clearTimeout(window.notifit_timeout);
-        if (config.animation != 'fade') {
-            // Set animations
-            if (config.animations && 
-                config.animations[config.animation] && 
-                config.animations[config.animation][config.position] && 
-                config.animations[config.animation][config.position].out && 
-                config.animations[config.animation][config.position].out.start && 
-                config.animations[config.animation][config.position].out.end) {
-                animation1 = config.animations[config.animation][config.position].out.start
-                animation2 = config.animations[config.animation][config.position].out.end
-            } else if (config.animations[config.available_animations[0]] && 
-                config.animations[config.available_animations[0]][config.position] && 
-                config.animations[config.available_animations[0]][config.position].out && 
-                config.animations[config.available_animations[0]][config.position].out.start && 
-                config.animations[config.available_animations[0]][config.position].out.end) {
-                animation1 = config.animations[config.available_animations[0]][config.position].out.start
-                animation2 = config.animations[config.available_animations[0]][config.position].out.end
-            } else {
-                throw new Error('Invalid animation')
-            }
-            // Execute animations       
-            $("#ui_notifIt").animate(animation1, 100, function() {
-                $("#ui_notifIt").animate(animation2, 100, function() {
-                    $("#ui_notifIt").remove();
-                    if (config.callback) {
-                        config.callback();
-                    }
-                });
-            });
-        } else {
-            // jQuery's fade, why create my own?
-            $("#ui_notifIt").fadeOut("slow", function() {
-                $("#ui_notifIt").remove();
-                if (config.callback) {
-                    config.callback();
-                }
-            });
-        }
-    }
+
+    // Confirm
     function notif_confirm(config){
         var $ = jQuery
         var _config = {
@@ -439,12 +444,114 @@
         _show()
         _setListeners()
     }
+
+    // Prompt
     function notif_prompt(config){
-        // TODO
+        var $ = jQuery
+        var _config = {
+            'message': 'Tell me something',
+            'default_value': '',
+            'textaccept': 'Accept',
+            'textcancel': 'Cancel',
+            'fullscreen': false,
+            'callback': null
+        }
+        var settings = $.extend({  }, _config, config)
+        var $prompt = $('.notifit_prompt')[0] ? $('.notifit_prompt') : null;
+        var $bg = $('.notifit_prompt_bg')[0] ? $('.notifit_prompt_bg') : null;
+        function _create(){
+            if($prompt !== null){ return $prompt }
+            var $acceptButton = $('<button>', {
+                'class': 'notifit_prompt_accept',
+                'text': settings.textaccept
+            })
+            var $cancelButton = $('<button>', {
+                'class': 'notifit_prompt_cancel',
+                'text': settings.textcancel
+            })
+            var $message = $('<p>', {
+                'class': 'notifit_prompt_message',
+                'text': settings.message
+            })
+            var $input = $('<input>', {
+                'type': 'text',
+                'class': 'notifit_prompt_input',
+                'value': settings.default_value
+            })
+            $prompt = $('<div>', {
+                'class': 'notifit_prompt'
+            })
+            $prompt
+                .append($message)
+                .append($input)
+                .append($cancelButton)
+                .append($acceptButton)
+            $bg = $('<div>', { 'class': 'notifit_prompt_bg' })
+            return $prompt
+        }
+        function _show(){
+            if($prompt){
+                if(settings.fullscreen){
+                    $bg.hide()
+                    $prompt.hide()
+                    $('body').append($bg)
+                    $('body').append($prompt)
+                    $prompt.css({
+                        'top': $bg.outerHeight() / 2 - ($prompt.outerHeight() / 2),
+                        'left': $bg.outerWidth() / 2 - ($prompt.outerWidth() / 2)
+                    })
+                    $bg.fadeIn('fast', function(){ $prompt.slideDown('fast', function(){ $(this).find('.notifit_prompt_input').focus() }) })
+                }else{
+                    $prompt.css({
+                        'top': '20px',
+                        'left': 'auto',
+                        'right': '20px',
+                        'display': 'none'
+                    })
+                    $('body').append($prompt)
+                    $prompt.slideDown('fast', function(){ $(this).find('.notifit_prompt_input').focus() })
+                }
+            }
+        }
+        function _hide(){
+            if($prompt){
+                $prompt.slideUp('fast', function(){
+                    $prompt.remove()
+                })
+            }
+            if($bg){
+                $bg.fadeOut('fast', function(){
+                    $bg.remove()
+                })
+            }
+        }
+        function _callback(){
+            _hide()
+            var response = null
+            if($(this).hasClass('notifit_prompt_accept')){
+                response = $(this).parents('.notifit_prompt').find('.notifit_prompt_input').val()
+            }else if($(this).hasClass('notifit_prompt_cancel')){
+                response = false
+            }
+            if(typeof settings.callback === 'function'){
+                return settings.callback(response)
+            }
+            return response
+        }
+        function _setListeners(){
+            $('html').one('click', '.notifit_prompt_accept, .notifit_prompt_cancel', _callback)
+        }
+
+        // Get the party started! Again! \o/
+        _create()
+        _show()
+        _setListeners()
     }
+
+
     return {
         notif: notif,
-        notif_dismiss: notif_dismiss,
-        notif_confirm: notif_confirm
+        notif_confirm: notif_confirm,
+        notif_prompt: notif_prompt
     };
 }));
