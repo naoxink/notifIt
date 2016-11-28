@@ -106,6 +106,49 @@ Function returns `true` or `false`
 If callback is passed, it recieves a param `true` or `false`
 
 
+## `notif_confirm()`
+### Description
+Now you can ask 'yes' or 'no' easy as --
+```javascript
+var myCallback = function(input_value){
+    if(input_value){
+        notif({
+            'type': 'success',
+            'msg': input_value,
+            'position': 'center'
+        })
+    }else{
+        notif({
+            'type': 'error',
+            'msg': 'Empty or cancelled',
+            'position': 'center'
+        })
+    }
+}
+
+notif_confirm({
+	'textaccept': 'That\'s it!',
+	'textcancel': 'I don\'t have a pet :(',
+	'message': 'What\'s your pet\'s name?',
+	'callback': myCallback
+})
+```
+
+#### Configuration
+
+Variable name|Type|Default|Optional
+---|---|---|---
+textaccept|`String`|Accept|Yes
+textcancel|`String`|Cancel|Yes
+default_value|`String`||Yes
+message|`String`|Tell me something|Yes
+callback|`Function`|null|Yes
+fulllscreen|`Boolean`|false|Yes
+
+#### Response
+If callback is passed, it recieves a param with the input value (if accepted) or `false` (if cancelled)
+
+
 # More things :)
 - [bgfader](https://github.com/naoxink/bgfader)
 - [Sublime text color scheme](https://github.com/naoxink/nxk-sublime-color-scheme)
