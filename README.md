@@ -13,6 +13,7 @@ Easy to learn and use. Customize with your favorite colors, define the size you 
  notifIt
  ├── css
  │   └── notifIt.css
+ │   └── notifIt.min.css
  ├── demo.html
  ├── dev
  │   └── notifIt.js
