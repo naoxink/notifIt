@@ -1,3 +1,5 @@
+# Check out [notifit 2!](https://github.com/naoxink/notifit-2) :D
+
 notifIt!
 =
 
