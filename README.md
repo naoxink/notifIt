@@ -10,6 +10,11 @@ Easy to learn and use. Customize with your favorite colors, define the size you 
 
 #### Give it a try! [Demo](http://naoxink.hol.es/notifIt)
 
+#### Install via npm
+```
+npm install notifit-js
+```
+
 #### Structure
 ```
  notifIt
