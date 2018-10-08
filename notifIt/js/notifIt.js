@@ -313,6 +313,9 @@
             "background-color": defaults.bgcolor,
             "color": defaults.color
         });
+        $("#ui_notifIt p").css({
+            "color": defaults.color
+        })
         // Class 'success', 'error', 'warning', 'info'..
         $("#ui_notifIt").addClass(defaults.type);
         // Set entry animation   
